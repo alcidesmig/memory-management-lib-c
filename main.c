@@ -151,16 +151,21 @@ void * realloc(void * p, size_t tamanho) {
 }
 
 int main() {
+    printf("Tamanho de um bloco %d\n", sizeof(Bloco));
     int * teste = (int*) malloc(sizeof(int));
     *teste = 5;
     printf("%d %d\n", *teste, teste);
     printf("Pós-malloc\n");
     free(teste);
     printf("Pós-free\n");
-    char * teste2;
-    teste2 = (char*) malloc(sizeof(char));
-    printf("Novo endereço de teste: %d\n", teste2);
+    char * teste2 = (char*) malloc(sizeof(char));
+    *teste2 = 'X';
+    printf("Novo endereço de teste char: %d = %c\n", teste2, *teste2);
     char * teste3 = (char*) malloc(sizeof(char));
-    printf("Novo endereço de teste: %d\n", teste3);
+    *teste3 = 'Y';
+    printf("Novo endereço de teste char: %d = %c\n", teste3, *teste3);
+    teste = (int *) malloc(sizeof(int));
+    printf("Novo endereço de teste int: %d\n", teste);
+
     return 0;
 }
