@@ -102,6 +102,16 @@ void * malloc(size_t tamanho) {
             // Pode-se fazer o splitting do bloco, deixando disponível a quantidade de memória que sobrou
             bloco_->livre = 0;
             printf("Reaproveitando\n");
+
+            if(bloco_->tamanho - tamanho > sizeof(Bloco)) { // Se existe espaço para ser aproveitado
+                bloco_->tamanho = tamanho;
+                size_t resto = bloco_->tamanho - tamanho;
+                Bloco * b = (Bloco *) (&(bloco_->inicio_dados) + bloco_->tamanho);
+                b->tamanho = resto - sizeof(Bloco);
+                b->livre = 1;
+                b->prox = ((Bloco *) inicio)->prox;
+                inicio = b;
+            }
         }
     }
 
@@ -147,7 +157,10 @@ int main() {
     printf("Pós-malloc\n");
     free(teste);
     printf("Pós-free\n");
-    teste = (int*) malloc(sizeof(int));
-    printf("Novo endereço de teste: %d\n", teste);
+    char * teste2;
+    teste2 = (char*) malloc(sizeof(char));
+    printf("Novo endereço de teste: %d\n", teste2);
+    char * teste3 = (char*) malloc(sizeof(char));
+    printf("Novo endereço de teste: %d\n", teste3);
     return 0;
 }
