@@ -1,6 +1,6 @@
 /*
 Os códigos foram baseados em: https://danluu.com/malloc-tutorial/ que é um tutorial disponibilizado pelos ministrantes da disciplina.
-com refatoração e alterações nas funções e correção de erros
+com refatoração e alterações nas funções e correção de erros e implementação do first-fit para reaproveitamento de blocos.
 
 Alcides Mignoso e Silva
 Matheus Victorello
