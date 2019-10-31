@@ -1,3 +1,11 @@
+/*
+Os códigos foram baseados em: https://danluu.com/malloc-tutorial/ que é um tutorial disponibilizado pelos ministrantes da disciplina.
+com refatoração e alterações nas funções e correção de erros
+
+Alcides Mignoso e Silva
+Matheus Victorello
+*/
+
 #include <assert.h>
 #include <string.h>
 #include <sys/types.h>
